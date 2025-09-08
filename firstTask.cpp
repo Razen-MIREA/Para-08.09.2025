@@ -3,53 +3,50 @@
 #include <vector>
 
 int main() {
-    // Создаем строку, аналогичную str_1 = 'AaBbCcDd'
+    // Работа со строкой
     std::string str_1 = "AaBbCcDd";
     
-    // Выводим символы с шагом 2, начиная с первого
-    std::cout << "str_1[::2] -> ";
-    for(size_t i = 0; i < str_1.size(); i += 2) {
-        std::cout << str_1[i];
+    // Эквивалент str_1[::2]
+    std::string result1;
+    for (size_t i = 0; i < str_1.length(); i += 2) {
+        result1 += str_1[i];
     }
-    std::cout << std::endl;
+    std::cout << "str_1[::2] -> " << result1 << std::endl;
     
-    // Выводим символы с шагом 2, начиная со второго
-    std::cout << "str_1[1::2] -> ";
-    for(size_t i = 1; i < str_1.size(); i += 2) {
-        std::cout << str_1[i];
+    // Эквивалент str_1[1::2]
+    std::string result2;
+    for (size_t i = 1; i < str_1.length(); i += 2) {
+        result2 += str_1[i];
     }
-    std::cout << std::endl;
+    std::cout << "str_1[1::2] -> " << result2 << std::endl;
     
-    // Создаем вектор, аналогичный li = ['a','1','b','2','c','3']
+    // Работа с вектором
     std::vector<std::string> li = {"a", "1", "b", "2", "c", "3"};
-    
-    // Создаем два новых вектора
     std::vector<std::string> li_1;
     std::vector<std::string> li_2;
     
-    // Заполняем li_1 элементами с четными индексами
-    for(size_t i = 0; i < li.size(); i += 2) {
+    // Эквивалент li[0::2]
+    for (size_t i = 0; i < li.size(); i += 2) {
         li_1.push_back(li[i]);
     }
     
-    // Заполняем li_2 элементами с нечетными индексами
-    for(size_t i = 1; i < li.size(); i += 2) {
+    // Эквивалент li[1::2]
+    for (size_t i = 1; i < li.size(); i += 2) {
         li_2.push_back(li[i]);
     }
     
-    // Освобождаем память, аналогичное del li
-    li.clear();
+    // Эквивалент del li
+    li.clear(); // Освобождаем память
     
-    // Выводим результаты
-    for(const auto& item : li_1) {
-        std::cout << item << " ";
+    // Вывод результатов
+    for (const auto& elem : li_1) {
+        std::cout << elem << " ";
     }
     std::cout << std::endl;
     
-    for(const auto& item : li_2) {
-        std::cout << item << " ";
+    for (const auto& elem : li_2) {
+        std::cout << elem << " ";
     }
-    std::cout << std::endl;
     
     return 0;
 }
