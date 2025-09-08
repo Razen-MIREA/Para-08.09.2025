@@ -1,11 +1,3 @@
-str_1 = 'AaBbCcDd'
-print('str_1[::2] ->', str_1[::2], end='\n')
-print('str_1[1::2] ->', str_1[1::2])
-
-li = ['a','1','b','2','c','3']
-li_1 = li[0::2]
-li_2 = li[1::2]
-
-del li
-
-print(li_1, li_2, sep='\n')
+param1 = "Практика номер 0"
+param1 = param1.replace('0', '1')
+print(param1)
