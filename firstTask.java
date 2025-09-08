@@ -1,54 +1,54 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
         // Работа со строкой
         String str_1 = "AaBbCcDd";
         
-        // Эквивалент str_1[::2] - получаем символы с шагом 2, начиная с 0
-        String result1 = getSubstring(str_1, 0, 2);
-        System.out.println("str_1[::2] -> " + result1);
+        // Эквивалент str_1[::2]
+        StringBuilder evenChars = new StringBuilder();
+        for (int i = 0; i < str_1.length(); i += 2) {
+            evenChars.append(str_1.charAt(i));
+        }
+        System.out.print("str_1[::2] -> " + evenChars);
+        System.out.println();
         
-        // Эквивалент str_1[1::2] - получаем символы с шагом 2, начиная с 1
-        String result2 = getSubstring(str_1, 1, 2);
-        System.out.println("str_1[1::2] -> " + result2);
+        // Эквивалент str_1[1::2]
+        StringBuilder oddChars = new StringBuilder();
+        for (int i = 1; i < str_1.length(); i += 2) {
+            oddChars.append(str_1.charAt(i));
+        }
+        System.out.print("str_1[1::2] -> " + oddChars);
+        System.out.println();
         
         // Работа со списком
-        String[] li = {"a", "1", "b", "2", "c", "3"};
+        List<String> li = new ArrayList<>();
+        li.add("a");
+        li.add("1");
+        li.add("b");
+        li.add("2");
+        li.add("c");
+        li.add("3");
         
-        // Создаем два новых массива
-        String[] li_1 = getElements(li, 0, 2);
-        String[] li_2 = getElements(li, 1, 2);
+        List<String> li_1 = new ArrayList<>();
+        List<String> li_2 = new ArrayList<>();
         
-        // Эквивалент del li - очищаем массив
-        li = null;
+        // Эквивалент li[0::2]
+        for (int i = 0; i < li.size(); i += 2) {
+            li_1.add(li.get(i));
+        }
         
-        // Выводим результаты
-        printArray(li_1);
-        printArray(li_2);
-    }
-    
-    // Метод для получения подстроки с заданным шагом
-    private static String getSubstring(String str, int start, int step) {
-        StringBuilder result = new StringBuilder();
-        for (int i = start; i < str.length(); i += step) {
-            result.append(str.charAt(i));
+        // Эквивалент li[1::2]
+        for (int i = 1; i < li.size(); i += 2) {
+            li_2.add(li.get(i));
         }
-        return result.toString();
-    }
-    
-    // Метод для получения элементов массива с заданным шагом
-    private static String[] getElements(String[] arr, int start, int step) {
-        List<String> temp = new ArrayList<>();
-        for (int i = start; i < arr.length; i += step) {
-            temp.add(arr[i]);
-        }
-        return temp.toArray(new String[0]);
-    }
-    
-    // Метод для вывода массива
-    private static void printArray(String[] arr) {
-        for (String s : arr) {
-            System.out.print(s + " ");
-        }
-        System.out.println();
+        
+        // Эквивалент del li
+        li = null; // В Java это освободит память при сборке мусора
+        
+        // Вывод результатов
+        System.out.println(String.join(" ", li_1));
+        System.out.println(String.join(" ", li_2));
     }
 }
